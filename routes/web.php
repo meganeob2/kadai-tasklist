@@ -12,8 +12,20 @@
 */
 
 Route::get('/', 'TasksController@index');
-
 Route::resource('tasks', 'TasksController');
+// index: showの補助ページ
+Route::get('messages', 'MessagesController@index')->name('messages.index');
+// create: 新規作成用のフォームページ
+Route::get('messages/create', 'MessagesController@create')->name('messages.create');
+// edit: 更新用のフォームページ
+Route::get('messages/{id}/edit', 'MessagesController@edit')->name('messages.edit');
+
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('login', 'Auth\LoginController@login')->name('login.post');
+Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
+
+Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup.get');
+Route::post('signup', 'Auth\RegisterController@register')->name('signup.post');
 
 /*
 Route::get('/', function () {
